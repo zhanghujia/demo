@@ -62,6 +62,7 @@ public class UsersController {
                               @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
         List<Users> list = usersService.queryPageAll();
+        System.out.println(">>>>>>>>>>>>>>>>>>");
         return new PageInfo<>(list);
     }
 
