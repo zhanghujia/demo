@@ -35,7 +35,8 @@ swagger:
   version: V1.0
   basePackage: com.hc.web.controller
   description: This document describes the definition of the front-end system microservice interface
-  terms-of-service-url: http://www.apache.org/licenses/LICENSE-2.0
+  terms-of-service-url: https://swagger.io/
+  license-url: http://www.apache.org/licenses/LICENSE-2.0
 
 jasypt:
   encryptor:
@@ -52,3 +53,7 @@ rong:
   APP_SECRIT: BEV264hUatgD
   APP_KEY: mgb7ka1nmddyg
   VERIF_CODE_URL: http://api.sms.ronghub.com/verifyCode.json
+
+logging:
+  file:
+    path: /spring/log

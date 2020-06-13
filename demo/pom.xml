@@ -29,6 +29,7 @@
         <mybatis.spring.boot.version>2.1.2</mybatis.spring.boot.version>
         <tk.mybatis.mapper.version>4.0.4</tk.mybatis.mapper.version>
         <pagehelper.spring.boot.version>1.2.3</pagehelper.spring.boot.version>
+        <weixin.miniapp.version>3.0.0</weixin.miniapp.version>
     </properties>
 
     <modules>

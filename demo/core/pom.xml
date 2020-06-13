@@ -96,6 +96,13 @@
             <version>${fastjson.version}</version>
         </dependency>
 
+        <!--小程序开发-->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-miniapp</artifactId>
+            <version>${weixin.miniapp.version}</version>
+        </dependency>
+
     </dependencies>
 
 
