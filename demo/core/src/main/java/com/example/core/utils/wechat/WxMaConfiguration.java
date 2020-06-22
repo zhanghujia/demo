@@ -26,8 +26,8 @@ import java.util.stream.Collectors;
  * 小程序 配置
  */
 
-@Configuration
-@EnableConfigurationProperties(WxMaProperties.class)
+//@Configuration
+//@EnableConfigurationProperties(WxMaProperties.class)
 public class WxMaConfiguration {
 
     private final WxMaProperties properties;

@@ -10,11 +10,11 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @ComponentScan("com.example")
-@MapperScan("com.example.business.mapper")
 @EnableSwagger2Doc
 @EnableCaching
 @EnableAsync
-@org.mybatis.spring.annotation.MapperScan("com.hc.core.utils.tk.mapper")
+@MapperScan("com.example.business.mapper")
+@org.mybatis.spring.annotation.MapperScan("com.example.core.utils.tk.mapper")
 public class WebApplication {
 
     public static void main(String[] args) {

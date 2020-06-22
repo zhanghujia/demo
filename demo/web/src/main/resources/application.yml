@@ -19,7 +19,7 @@ spring:
       test-on-borrow: true
       test-on-return: false
       pool-prepared-statements: true
-#      # 配置监控拦截的filters 去掉后监控sql无法统计 wall 防火墙
+      #      # 配置监控拦截的filters 去掉后监控sql无法统计 wall 防火墙
       filters: stat,wall
       max-pool-prepared-statement-per-connection-size: 25
       use-global-data-source-stat: true
@@ -29,10 +29,15 @@ swagger:
   enabled: true
   title: API
   version: V1.0
-  basePackage: com.hc.web.controller
+  basePackage: com.example.web.controller
   description: This document describes the definition of the front-end system microservice interface
   terms-of-service-url: https://swagger.io/
   license-url: http://www.apache.org/licenses/LICENSE-2.0
+
+mybatis:
+  type-aliases-package: com.hc.business.model
+  mapper-locations: classpath:mapper/*.xml
+  config-location: classpath:mybatis-config.xml
 
 jasypt:
   encryptor:

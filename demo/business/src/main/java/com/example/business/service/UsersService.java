@@ -1,7 +1,9 @@
 package com.example.business.service;
 
 import com.example.business.entity.Users;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 /**
@@ -10,8 +12,8 @@ import java.util.List;
  * @author makejava
  * @since 2020-05-21 14:56:18
  */
- 
-@Component 
+
+@Component
 public interface UsersService {
 
     /**
@@ -45,12 +47,14 @@ public interface UsersService {
      * @return 是否成功
      */
     boolean deleteById(Integer userId);
-    
+
     /**
      * 分页查询所有数据
      *
+     * @param page
+     * @param size
      * @return 实例对象数组
      */
-    List<Users> queryPageAll();
+    PageInfo queryPageAll(Integer page, Integer size);
 
 }

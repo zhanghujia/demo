@@ -3,6 +3,8 @@ package com.example.business.service.impl;
 import com.example.business.entity.Users;
 import com.example.business.mapper.UsersMapper;
 import com.example.business.service.UsersService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -16,10 +18,10 @@ import java.util.List;
  * @author makejava
  * @since 2020-05-21 14:56:18
  */
- 
+
 @Service("usersService")
 public class UsersServiceImpl implements UsersService {
-    
+
     private final UsersMapper usersMapper;
 
     public UsersServiceImpl(UsersMapper usersMapper) {
@@ -45,7 +47,7 @@ public class UsersServiceImpl implements UsersService {
      * @return 实例对象
      */
     @Override
-    @CacheEvict(cacheNames = "Users", key = "'List'")
+    @CacheEvict(cacheNames = "Users", key = "'List'", allEntries = true)
     public Users insert(Users users) {
         usersMapper.insert(users);
         return users;
@@ -58,8 +60,7 @@ public class UsersServiceImpl implements UsersService {
      * @return 实例对象
      */
     @Override
-    @CachePut(cacheNames = "Users", key = "'List'+'-'+#users.userId", unless = "#result == null")
-    @CacheEvict(cacheNames = "Users", key = "'List'")
+    @CacheEvict(cacheNames = "Users", key = "'List'", allEntries = true)
     public Users update(Users users) {
         usersMapper.updateByPrimaryKeySelective(users);
         return this.queryById(users.getUserId());
@@ -76,16 +77,18 @@ public class UsersServiceImpl implements UsersService {
     public boolean deleteById(Integer userId) {
         return usersMapper.deleteByPrimaryKey(userId) > 0;
     }
-    
+
     /**
      * 分页查询所有数据
      *
      * @return 实例对象数组
      */
     @Override
-    @Cacheable(cacheNames = "Users", key = "'List'", unless = "#result == null")
-    public List<Users> queryPageAll() {
-        return usersMapper.selectAll();
+    @Cacheable(cacheNames = "Users", key = "'List'+'-page-'+#page+'-size-'+#size", unless = "#result == null")
+    public PageInfo queryPageAll(Integer page, Integer size) {
+        PageHelper.startPage(page, size);
+        List<Users> list = usersMapper.selectAll();
+        return new PageInfo<>(list);
     }
-    
+
 }
