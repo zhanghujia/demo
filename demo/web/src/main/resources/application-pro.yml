@@ -1,10 +1,9 @@
 spring:
   profiles: pro
   datasource:
-    druid:
-      url: jdbc:mysql://39.106.70.85:3306/demo?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowMultiQueries=true&nullCatalogMeansCurrent=true&rewriteBatchedStatements=true
-      username: ENC(4VOMKgt6rq2oyZp3ZmM4cLae6IEJvDsNR93JQSkdYUHE+l625cSucf4VdtXUn5ow)
-      password: ENC(2Di/wKAZi3LtTUlYIlnDOi174XlKMX1pLZPQ3gVmU6ajF0Bw4b/47hhw4gJOfByE)
+    url: jdbc:mysql://39.106.70.85:3306/demo?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowMultiQueries=true&nullCatalogMeansCurrent=true&rewriteBatchedStatements=true
+    username: ENC(4VOMKgt6rq2oyZp3ZmM4cLae6IEJvDsNR93JQSkdYUHE+l625cSucf4VdtXUn5ow)
+    password: ENC(2Di/wKAZi3LtTUlYIlnDOi174XlKMX1pLZPQ3gVmU6ajF0Bw4b/47hhw4gJOfByE)
   redis:
     host: 39.106.70.85
     database: 1

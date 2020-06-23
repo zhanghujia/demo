@@ -1,10 +1,9 @@
 spring:
   profiles: dev
   datasource:
-     druid:
-       url: jdbc:mysql://47.104.62.154:3306/store-education?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowMultiQueries=true&nullCatalogMeansCurrent=true&rewriteBatchedStatements=true
-       username: root
-       password: 123456
+    url: jdbc:mysql://47.104.62.154:3306/store-education?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowMultiQueries=true&nullCatalogMeansCurrent=true&rewriteBatchedStatements=true
+    username: root
+    password: 123456
   redis:
     host: 47.104.62.154
     database: 2

@@ -39,7 +39,7 @@
         <!-- 连接池 数据监控 Druid 管理-->
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
+            <artifactId>druid</artifactId>
             <version>${druid.version}</version>
         </dependency>
 

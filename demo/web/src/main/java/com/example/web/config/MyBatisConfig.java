@@ -36,6 +36,7 @@ public class MyBatisConfig {
     private final static String COMMON_MAPPER = "com.example.core.utils.tk.mapper.Mapper";
 
 
+
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 
