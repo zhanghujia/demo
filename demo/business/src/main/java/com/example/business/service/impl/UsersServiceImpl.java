@@ -35,7 +35,7 @@ public class UsersServiceImpl implements UsersService {
      * @return 实例对象
      */
     @Override
-    @Cacheable(cacheNames = "Users", key = "'List'+'-'+#userId", unless = "#result == null")
+    @Cacheable(cacheNames = {"Users"}, keyGenerator = "myKeyGenerator", unless = "#result == null")
     public Users queryById(Integer userId) {
         return usersMapper.selectByPrimaryKey(userId);
     }

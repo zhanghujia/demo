@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
@@ -13,7 +14,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.*;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Method;
 import java.time.Duration;
+import java.util.Arrays;
 
 /**
  * @author JIA
@@ -77,6 +80,12 @@ public class RedisConfig {
 
     private RedisSerializer<Object> valueSerializer() {
         return new GenericJackson2JsonRedisSerializer();
+    }
+
+
+    @Bean("myKeyGenerator")
+    public KeyGenerator keyGenerator() {
+        return (o, method, objects) -> method.getName() + Arrays.asList(objects).toString();
     }
 
 }
