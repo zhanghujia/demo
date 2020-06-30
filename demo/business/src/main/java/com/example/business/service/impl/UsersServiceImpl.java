@@ -20,7 +20,7 @@ import java.util.List;
  * @since 2020-05-21 14:56:18
  */
 
-@CacheConfig(cacheNames = "Users")
+@CacheConfig(cacheNames = {"Users"})
 @Service("usersService")
 public class UsersServiceImpl implements UsersService {
 
@@ -38,11 +38,9 @@ public class UsersServiceImpl implements UsersService {
      */
     @Override
     @Cacheable(keyGenerator = "myKeyGenerator", unless = "#result == null")
-    public Users queryById(Integer userId,String name,String age) {
+    public Users queryById(Integer userId) {
         return usersMapper.selectByPrimaryKey(userId);
     }
-
-
 
     /**
      * 新增数据
@@ -51,7 +49,7 @@ public class UsersServiceImpl implements UsersService {
      * @return 实例对象
      */
     @Override
-    @CacheEvict(key = "'List'", allEntries = true)
+    @CacheEvict(allEntries = true)
     public Users insert(Users users) {
         usersMapper.insert(users);
         return users;
@@ -64,10 +62,10 @@ public class UsersServiceImpl implements UsersService {
      * @return 实例对象
      */
     @Override
-    @CacheEvict(key = "'List'", allEntries = true)
+    @CacheEvict(allEntries = true)
     public Users update(Users users) {
         usersMapper.updateByPrimaryKeySelective(users);
-        return null;
+        return this.queryById(users.getUserId());
     }
 
     /**
@@ -77,7 +75,7 @@ public class UsersServiceImpl implements UsersService {
      * @return 是否成功
      */
     @Override
-    @CacheEvict(key = "'List'", allEntries = true)
+    @CacheEvict(allEntries = true)
     public boolean deleteById(Integer userId) {
         return usersMapper.deleteByPrimaryKey(userId) > 0;
     }
@@ -88,7 +86,7 @@ public class UsersServiceImpl implements UsersService {
      * @return 实例对象数组
      */
     @Override
-    @Cacheable(key = "'List'+'-page-'+#page+'-size-'+#size", unless = "#result == null")
+    @Cacheable(keyGenerator = "myKeyGenerator", unless = "#result == null")
     public PageInfo queryPageAll(Integer page, Integer size) {
         PageHelper.startPage(page, size);
         List<Users> list = usersMapper.selectAll();

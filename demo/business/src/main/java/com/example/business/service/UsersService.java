@@ -22,7 +22,7 @@ public interface UsersService {
      * @param userId 主键
      * @return 实例对象
      */
-    Users queryById(Integer userId, String name, String age);
+    Users queryById(Integer userId);
 
     /**
      * 新增数据

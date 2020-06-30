@@ -34,12 +34,10 @@ public class UsersController {
         this.usersService = usersService;
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     @ApiOperation(value = "依据主键获取 Users", response = Result.class)
-    public Users selectDetail(@RequestParam("id") Integer id,
-                              @RequestParam("name")String name,
-                              @RequestParam("age")String age) {
-        return usersService.queryById(id, name, age);
+    public Users selectDetail(@PathVariable("id") Integer id) {
+        return usersService.queryById(id);
     }
     
     @PostMapping("/insert")
