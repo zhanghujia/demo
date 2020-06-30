@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.DefaultParameterNameDiscoverer;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
@@ -13,10 +14,14 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.*;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author JIA
@@ -85,7 +90,15 @@ public class RedisConfig {
 
     @Bean("myKeyGenerator")
     public KeyGenerator keyGenerator() {
-        return (o, method, objects) -> method.getName() + Arrays.asList(objects).toString();
+        return (o, method, objects) -> {
+            DefaultParameterNameDiscoverer discover = new DefaultParameterNameDiscoverer();
+            String[] parameterNames = discover.getParameterNames(method);
+            List<String> stringList = new ArrayList<>();
+            for (int i = 0; i < Objects.requireNonNull(parameterNames).length; i++) {
+                stringList.add(parameterNames[i] + "-" + objects[i]);
+            }
+            return "List-" + String.join("-", stringList);
+        };
     }
 
 }

@@ -5,6 +5,7 @@ import com.example.business.mapper.UsersMapper;
 import com.example.business.service.UsersService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -19,6 +20,7 @@ import java.util.List;
  * @since 2020-05-21 14:56:18
  */
 
+@CacheConfig(cacheNames = "Users")
 @Service("usersService")
 public class UsersServiceImpl implements UsersService {
 
@@ -35,10 +37,12 @@ public class UsersServiceImpl implements UsersService {
      * @return 实例对象
      */
     @Override
-    @Cacheable(cacheNames = {"Users"}, keyGenerator = "myKeyGenerator", unless = "#result == null")
-    public Users queryById(Integer userId) {
+    @Cacheable(keyGenerator = "myKeyGenerator", unless = "#result == null")
+    public Users queryById(Integer userId,String name,String age) {
         return usersMapper.selectByPrimaryKey(userId);
     }
+
+
 
     /**
      * 新增数据
@@ -47,7 +51,7 @@ public class UsersServiceImpl implements UsersService {
      * @return 实例对象
      */
     @Override
-    @CacheEvict(cacheNames = "Users", key = "'List'", allEntries = true)
+    @CacheEvict(key = "'List'", allEntries = true)
     public Users insert(Users users) {
         usersMapper.insert(users);
         return users;
@@ -60,10 +64,10 @@ public class UsersServiceImpl implements UsersService {
      * @return 实例对象
      */
     @Override
-    @CacheEvict(cacheNames = "Users", key = "'List'", allEntries = true)
+    @CacheEvict(key = "'List'", allEntries = true)
     public Users update(Users users) {
         usersMapper.updateByPrimaryKeySelective(users);
-        return this.queryById(users.getUserId());
+        return null;
     }
 
     /**
@@ -73,7 +77,7 @@ public class UsersServiceImpl implements UsersService {
      * @return 是否成功
      */
     @Override
-    @CacheEvict(cacheNames = "Users", key = "'List'", allEntries = true)
+    @CacheEvict(key = "'List'", allEntries = true)
     public boolean deleteById(Integer userId) {
         return usersMapper.deleteByPrimaryKey(userId) > 0;
     }
@@ -84,7 +88,7 @@ public class UsersServiceImpl implements UsersService {
      * @return 实例对象数组
      */
     @Override
-    @Cacheable(cacheNames = "Users", key = "'List'+'-page-'+#page+'-size-'+#size", unless = "#result == null")
+    @Cacheable(key = "'List'+'-page-'+#page+'-size-'+#size", unless = "#result == null")
     public PageInfo queryPageAll(Integer page, Integer size) {
         PageHelper.startPage(page, size);
         List<Users> list = usersMapper.selectAll();
