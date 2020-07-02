@@ -5,6 +5,8 @@ import com.example.business.mapper.UsersMapper;
 import com.example.business.service.UsersService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -90,6 +92,17 @@ public class UsersServiceImpl implements UsersService {
         PageHelper.startPage(page, size);
         List<Users> list = usersMapper.selectAll();
         return new PageInfo<>(list);
+    }
+
+    @RabbitListener(queues = "jia.news")
+    public void receive(Users users) {
+        System.out.println("收到信息" + users);
+    }
+
+    @RabbitListener(queues = "jia")
+    public void receive02(Message message) {
+        System.out.println(message.getBody());
+        System.out.println(message.getMessageProperties());
     }
 
 }
