@@ -64,7 +64,6 @@ public class RedisConfig {
 
         //缓存配置对象
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
-
         redisCacheConfiguration = redisCacheConfiguration.entryTtl(Duration.ofMinutes(360L))
                 //设置缓存的默认超时时间：6小时0分钟
                 .disableCachingNullValues()
