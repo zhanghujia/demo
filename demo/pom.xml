@@ -30,7 +30,7 @@
         <tk.mybatis.mapper.version>4.0.4</tk.mybatis.mapper.version>
         <pagehelper.spring.boot.version>1.2.3</pagehelper.spring.boot.version>
         <weixin.miniapp.version>3.0.0</weixin.miniapp.version>
-        <alipay.version>3.1.0</alipay.version>
+        <alipay.version>4.9.9</alipay.version>
     </properties>
 
     <modules>
