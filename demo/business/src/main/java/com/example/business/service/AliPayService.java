@@ -2,7 +2,7 @@ package com.example.business.service;
 
 import com.alipay.api.AlipayApiException;
 import com.example.core.utils.alipay.AliPayBean;
-import com.example.core.utils.alipay.AliPayBean;
+import com.example.core.utils.alipay.AliPayRefundBean;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import java.util.Map;
 public interface AliPayService {
 
     /**
-     * 阿里云支付
+     * 支付宝支付
      *
      * @param aliPayBean
      * @return
@@ -31,4 +31,14 @@ public interface AliPayService {
      * @param response
      */
     void returnNotifyUrlInfo(HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * 支付宝退款
+     *
+     * @param aliPayRefundBean
+     * @return
+     * @throws AlipayApiException
+     */
+    Map<String, String> refund(AliPayRefundBean aliPayRefundBean) throws AlipayApiException;
+
 }

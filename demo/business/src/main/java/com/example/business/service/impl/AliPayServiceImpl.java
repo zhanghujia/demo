@@ -4,13 +4,13 @@ import com.alipay.api.AlipayApiException;
 import com.example.business.service.AliPayService;
 import com.example.core.utils.alipay.AliPayBean;
 import com.example.core.utils.alipay.AliPayConfig;
+import com.example.core.utils.alipay.AliPayRefundBean;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author 10696
@@ -50,5 +50,12 @@ public class AliPayServiceImpl implements AliPayService {
         }
     }
 
+    @Override
+    public Map<String, String> refund(AliPayRefundBean aliPayRefundBean) throws AlipayApiException {
+        Map<String, String> map = new HashMap<>();
+        String refund = aliPayConfig.refund(aliPayRefundBean);
+        map.put("refund", refund);
+        return map;
+    }
 
 }
