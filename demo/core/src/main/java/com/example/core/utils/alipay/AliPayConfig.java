@@ -64,7 +64,6 @@ public class AliPayConfig {
         // 3、请求支付宝进行付款，并获取支付结果
         String result = alipayClient.pageExecute(alipayRequest).getBody();
         // 返回付款信息
-        System.out.println(result);
         return result;
     }
 
@@ -77,7 +76,7 @@ public class AliPayConfig {
      */
     public String refund(AliPayRefundBean aliPayRefundBean) throws AlipayApiException {
         // 2、设置请求参数
-        String aliPayPublicKey = aliPayProperties.getPublicKey();
+        String aliPayPublicKey = aliPayProperties.getKey();
         // 构造请求
         AlipayTradeRefundRequest request = new AlipayTradeRefundRequest();
         request.setBizContent(JSON.toJSONString(aliPayRefundBean));
@@ -85,7 +84,6 @@ public class AliPayConfig {
         AlipayClient alipayClient = alipayClient(aliPayPublicKey);
         // 3、请求支付宝进行退款，并获取支付结果
         AlipayTradeRefundResponse response = alipayClient.execute(request);
-        System.out.println(response);
         return response.getMsg();
     }
 

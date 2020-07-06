@@ -28,4 +28,6 @@ public class AliPayProperties {
 
     private String gatewayUrl;
 
+    private String key;
+
 }
