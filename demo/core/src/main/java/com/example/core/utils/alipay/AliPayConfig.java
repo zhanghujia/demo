@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.request.AlipayDataDataserviceBillDownloadurlQueryRequest;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.request.AlipayTradeRefundRequest;
 import com.alipay.api.response.AlipayTradeRefundResponse;
@@ -85,6 +86,26 @@ public class AliPayConfig {
         // 3、请求支付宝进行退款，并获取支付结果
         AlipayTradeRefundResponse response = alipayClient.execute(request);
         return response.getMsg();
+    }
+
+    /**
+     * 查询账单
+     *
+     * @param aliPayBillBean
+     * @return
+     * @throws AlipayApiException
+     */
+    public String bill(AliPayBillBean aliPayBillBean) throws AlipayApiException {
+        String aliPayPublicKey = aliPayProperties.getKey();
+        //连接参数
+        AlipayClient alipayClient = alipayClient(aliPayPublicKey);
+        // 构造请求
+        AlipayDataDataserviceBillDownloadurlQueryRequest request =
+                new AlipayDataDataserviceBillDownloadurlQueryRequest();
+        request.setBizContent(JSON.toJSONString(aliPayBillBean));
+        // 3、请求支付宝账单，并获取支付结果
+        String result = alipayClient.execute(request).getBody();
+        return result;
     }
 
 }
