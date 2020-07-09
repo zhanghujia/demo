@@ -85,6 +85,20 @@ public class RedisUtil {
         }
     }
 
+    /**
+     * 依据前缀获取key值 key值需要加 * 号
+     *
+     * @param key
+     * @return
+     */
+    public Set<String> keys(String key) {
+        try {
+            return redisTemplate.keys(key);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     /*=============================String=====================================*/
 
     /**
