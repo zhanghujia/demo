@@ -1,6 +1,7 @@
 package com.example.web;
 
 import com.example.business.entity.Users;
+import com.example.business.es.UsersRepository;
 import com.example.business.mapper.UsersMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.*;
@@ -23,10 +24,21 @@ class WebApplicationTests {
     @Autowired
     private AmqpAdmin amqpAdmin;
 
+//    @Autowired
+//    private UsersRepository usersRepository;
+
+
     @Test
     void contextLoads() {
 
     }
+
+    @Test
+    void save() {
+//        Users users = new Users();
+//        usersRepository.index(users);
+    }
+
 
     @Test
     void send() {
@@ -54,10 +66,10 @@ class WebApplicationTests {
     @Test
     void createExchange() {
         amqpAdmin.declareExchange(new DirectExchange("exchange.admin"));
-        amqpAdmin.declareQueue(new Queue("admin",true));
+        amqpAdmin.declareQueue(new Queue("admin", true));
         amqpAdmin.declareBinding(new Binding(
-                "admin",Binding.DestinationType.QUEUE,"exchange.admin",
-                "admin",null));
+                "admin", Binding.DestinationType.QUEUE, "exchange.admin",
+                "admin", null));
 
     }
 

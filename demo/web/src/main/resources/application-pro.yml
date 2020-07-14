@@ -6,9 +6,10 @@ spring:
     password: ENC(2Di/wKAZi3LtTUlYIlnDOi174XlKMX1pLZPQ3gVmU6ajF0Bw4b/47hhw4gJOfByE)
   rabbitmq:
     host: 39.106.70.85
-    username: guest
-    password: guest
+    username: admin
+    password: admin
     port: 5672
+
   redis:
     host: 39.106.70.85
     database: 1
@@ -21,5 +22,10 @@ spring:
         max-active: 10
         max-wait: -1ms
         min-idle: 0
+  data:
+    elasticsearch:
+      client:
+        reactive:
+          endpoints: 39.106.70.85:9300
 server:
   port: 8081

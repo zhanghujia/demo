@@ -16,7 +16,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableAsync
 @EnableRabbit
 @MapperScan("com.example.business.mapper")
-@org.mybatis.spring.annotation.MapperScan("com.example.core.utils.tk.mapper")
+@org.mybatis.spring.annotation.MapperScan({"com.example.core.utils.tk.mapper","com.example.business.es"})
 public class WebApplication {
 
     public static void main(String[] args) {
