@@ -1,7 +1,7 @@
 package com.example.web;
 
 import com.example.business.entity.Users;
-import com.example.business.es.UsersRepository;
+import com.example.business.es.UsersEsRepository;
 import com.example.business.mapper.UsersMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.*;
@@ -24,21 +24,13 @@ class WebApplicationTests {
     @Autowired
     private AmqpAdmin amqpAdmin;
 
-//    @Autowired
-//    private UsersRepository usersRepository;
-
+    @Autowired
+    private UsersEsRepository usersEsRepository;
 
     @Test
     void contextLoads() {
-
+        usersEsRepository.index(new Users());
     }
-
-    @Test
-    void save() {
-//        Users users = new Users();
-//        usersRepository.index(users);
-    }
-
 
     @Test
     void send() {

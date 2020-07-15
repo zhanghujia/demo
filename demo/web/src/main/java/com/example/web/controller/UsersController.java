@@ -6,11 +6,9 @@ import com.example.web.annotation.ResponseResult;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiOperation;
 import com.example.core.utils.result.Result;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * (Users)表控制层
@@ -18,7 +16,7 @@ import java.util.List;
  * @author makejava
  * @since 2020-05-21 14:56:18
  */
- 
+
 @RestController
 @RequestMapping("/users")
 @ResponseResult
@@ -29,23 +27,24 @@ public class UsersController {
      * 服务对象
      */
     private final UsersService usersService;
-    
+
     public UsersController(UsersService usersService) {
         this.usersService = usersService;
     }
+
 
     @GetMapping("/{id}")
     @ApiOperation(value = "依据主键获取 Users", response = Result.class)
     public Users selectDetail(@PathVariable("id") Integer id) {
         return usersService.queryById(id);
     }
-    
+
     @PostMapping("/insert")
     @ApiOperation(value = "新增 Users", response = Result.class)
     public Users addUsers(@Valid @RequestBody Users users) {
         return usersService.insert(users);
     }
-   
+
     @PutMapping("/update")
     @ApiOperation(value = "修改 Users", response = Result.class)
     public Users updateUsers(@RequestBody Users users) {

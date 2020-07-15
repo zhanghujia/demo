@@ -10,13 +10,13 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
-@ComponentScan("com.example")
+@ComponentScan({"com.example"})
 @EnableSwagger2Doc
 @EnableCaching
 @EnableAsync
 @EnableRabbit
 @MapperScan("com.example.business.mapper")
-@org.mybatis.spring.annotation.MapperScan({"com.example.core.utils.tk.mapper","com.example.business.es"})
+@org.mybatis.spring.annotation.MapperScan("com.example.core.utils.tk.mapper")
 public class WebApplication {
 
     public static void main(String[] args) {
