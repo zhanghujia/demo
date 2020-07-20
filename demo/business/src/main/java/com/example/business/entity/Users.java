@@ -15,7 +15,6 @@ import javax.persistence.Id;
  * @since 2020-05-21 14:56:18
  */
 @Data
-@Document(indexName = "demo",type = "users")
 public class Users implements Serializable {
 
     private static final long serialVersionUID = -53762884959197042L;

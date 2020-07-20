@@ -111,6 +111,10 @@
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.13" />
           <element id="library" level="project" name="Maven: org.elasticsearch.plugin:aggs-matrix-stats-client:6.8.10" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.4" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-security:2.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.2.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.2.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.2.5.RELEASE" />
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper-spring-boot-starter:1.2.3" />
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper-spring-boot-autoconfigure:1.2.3" />
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:5.1.2" />
