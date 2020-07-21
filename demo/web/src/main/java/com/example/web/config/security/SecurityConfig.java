@@ -1,4 +1,4 @@
-package com.example.web.config;
+package com.example.web.config.security;
 
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;

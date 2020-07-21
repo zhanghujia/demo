@@ -1,4 +1,4 @@
-package com.example.web.config;
+package com.example.web.config.mybatis;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageHelper;

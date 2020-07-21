@@ -1,4 +1,4 @@
-package com.example.web.config;
+package com.example.web.config.interceptor;
 
 import com.example.web.interceptor.ResultInterceptor;
 import com.example.web.myconfig.MyFilter;

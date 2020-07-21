@@ -1,4 +1,4 @@
-package com.example.web.config;
+package com.example.web.config.database;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;

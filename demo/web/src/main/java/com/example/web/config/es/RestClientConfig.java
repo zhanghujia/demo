@@ -1,4 +1,4 @@
-package com.example.web.config;
+package com.example.web.config.es;
 
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.context.annotation.Bean;

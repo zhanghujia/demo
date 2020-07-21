@@ -1,4 +1,4 @@
-package com.example.web.config;
+package com.example.web.config.encryptor;
 
 import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
