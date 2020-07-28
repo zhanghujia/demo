@@ -27,7 +27,7 @@
         <auth0.jwt.version>3.3.0</auth0.jwt.version>
         <mybatis.spring.boot.version>2.1.2</mybatis.spring.boot.version>
         <tk.mybatis.mapper.version>4.0.4</tk.mybatis.mapper.version>
-        <pagehelper.spring.boot.version>1.2.3</pagehelper.spring.boot.version>
+        <pagehelper.spring.boot.version>1.2.5</pagehelper.spring.boot.version>
         <weixin.miniapp.version>3.0.0</weixin.miniapp.version>
         <alipay.version>4.9.9</alipay.version>
     </properties>

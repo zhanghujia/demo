@@ -12,8 +12,6 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * (Users)表服务实现类
  *
@@ -89,9 +87,7 @@ public class UsersServiceImpl implements UsersService {
     @Override
     @Cacheable(keyGenerator = "myKeyGenerator", unless = "#result == null")
     public PageInfo queryPageAll(Integer page, Integer size) {
-        PageHelper.startPage(page, size);
-        List<Users> list = usersMapper.selectAll();
-        return new PageInfo<>(list);
+        return PageHelper.startPage(page, size).doSelectPageInfo(this.usersMapper::selectAll);
     }
 
     @RabbitListener(queues = "jia.news")

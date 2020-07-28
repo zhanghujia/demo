@@ -1,8 +1,9 @@
 package com.example.business.entity;
 
 import java.io.Serializable;
+import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.elasticsearch.annotations.Document;
+
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,24 +15,25 @@ import javax.persistence.Id;
  * @author makejava
  * @since 2020-05-21 14:56:18
  */
+@Builder
 @Data
 public class Users implements Serializable {
 
     private static final long serialVersionUID = -53762884959197042L;
-    
+
     /**
-    * 用户主键
-    */
+     * 用户主键
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
     /**
-    * 用户名
-    */    
+     * 用户名
+     */
     private String userName;
     /**
-    * 密码
-    */    
+     * 密码
+     */
     private String password;
 
 

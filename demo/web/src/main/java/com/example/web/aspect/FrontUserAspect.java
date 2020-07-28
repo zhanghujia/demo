@@ -16,7 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
-@Aspect
+//@Aspect
 @Component
 @Slf4j
 public class FrontUserAspect {

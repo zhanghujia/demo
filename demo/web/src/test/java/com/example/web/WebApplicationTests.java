@@ -1,5 +1,6 @@
 package com.example.web;
 
+import com.example.business.entity.Users;
 import com.example.business.mapper.UsersMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.*;
@@ -24,6 +25,12 @@ class WebApplicationTests {
 
     @Test
     void contextLoads() {
+        Users users = Users.builder()
+                .userId(1)
+                .userName("root")
+                .password("password")
+                .build();
+        System.out.println(users);
 
     }
 
@@ -57,7 +64,6 @@ class WebApplicationTests {
         amqpAdmin.declareBinding(new Binding(
                 "admin", Binding.DestinationType.QUEUE, "exchange.admin",
                 "admin", null));
-
     }
 
 
