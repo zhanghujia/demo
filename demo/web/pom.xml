@@ -64,6 +64,12 @@
         </dependency>
 
         <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>${admin.starter.client.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.github.ulisesbocchio</groupId>
             <artifactId>jasypt-spring-boot-starter</artifactId>
             <version>${github.ulisesbocchio.jasypt.version}</version>

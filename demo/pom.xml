@@ -30,6 +30,7 @@
         <pagehelper.spring.boot.version>1.2.5</pagehelper.spring.boot.version>
         <weixin.miniapp.version>3.0.0</weixin.miniapp.version>
         <alipay.version>4.9.9</alipay.version>
+        <admin.starter.client.version>2.3.0</admin.starter.client.version>
     </properties>
 
     <modules>
@@ -45,10 +46,6 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>

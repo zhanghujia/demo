@@ -23,7 +23,17 @@ spring:
     max-pool-prepared-statement-per-connection-size: 25
     use-global-data-source-stat: true
     connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlmillis=500
-
+  boot:
+    admin:
+      client:
+        url: http://localhost:8081
+        username: admin
+        password: 123456
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 swagger:
   enabled: true
@@ -61,11 +71,7 @@ logging:
     path: /spring/log
 
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+
 
 pagehelper:
   # dialect: ①
