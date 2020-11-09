@@ -7,7 +7,8 @@
         <!--驼峰式文件映射-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <!--sql log 日志打印-->
-        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+        <setting name="cacheEnabled" value="true" />
     </settings>
 
     <typeAliases>

@@ -1,7 +1,9 @@
 package com.example.business.mapper;
 
 import com.example.business.entity.Users;
+import com.example.core.utils.redis.MybatisRedisCache;
 import com.example.core.utils.tk.mapper.Mapper;
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.springframework.stereotype.Repository;
 
 
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Repository;
  */
  
 @Repository
+@CacheNamespace(implementation = MybatisRedisCache.class,eviction = MybatisRedisCache.class)
 public interface UsersMapper extends Mapper<Users> {
 
 

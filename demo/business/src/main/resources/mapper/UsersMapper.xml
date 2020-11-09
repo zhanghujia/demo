@@ -8,4 +8,6 @@
         <result property="password" column="password" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <cache-ref namespace="com.example.business.mapper.UsersMapper"/>
+
 </mapper>
