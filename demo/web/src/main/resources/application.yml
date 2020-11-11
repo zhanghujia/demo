@@ -35,14 +35,10 @@ management:
       exposure:
         include: "*"
 
-swagger:
-  enabled: true
-  title: API
-  version: V1.0
-  basePackage: com.example.web.controller
-  description: This document describes the definition of the front-end system microservice interface
-  terms-of-service-url: https://swagger.io/
-  license-url: http://www.apache.org/licenses/LICENSE-2.0
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

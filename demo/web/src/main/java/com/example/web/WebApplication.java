@@ -1,17 +1,17 @@
 package com.example.web;
 
-import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @ComponentScan({"com.example"})
-@EnableSwagger2Doc
+@EnableOpenApi
 @EnableCaching
 @EnableAsync
 @EnableRabbit

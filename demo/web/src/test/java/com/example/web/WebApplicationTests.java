@@ -25,11 +25,10 @@ class WebApplicationTests {
 
     @Test
     void contextLoads() {
-        Users users = Users.builder()
-                .userId(1)
-                .userName("root")
-                .password("password")
-                .build();
+        Users users = new Users()
+                .setPassword("123456")
+                .setUserName("root")
+                .setUserId(1);
         System.out.println(users);
 
     }

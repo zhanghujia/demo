@@ -1,8 +1,12 @@
 package com.example.business.entity;
 
 import java.io.Serializable;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 
 import javax.persistence.GeneratedValue;
@@ -15,8 +19,11 @@ import javax.persistence.Id;
  * @author makejava
  * @since 2020-05-21 14:56:18
  */
-@Builder
+
 @Data
+@Accessors(chain = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class Users implements Serializable {
 
     private static final long serialVersionUID = -53762884959197042L;
