@@ -1,0 +1,5 @@
+jasypt:
+  encryptor:
+    bean: encryptorBean
+
+
