@@ -3,6 +3,7 @@ package com.example.core.utils.oss;
 import com.qiniu.util.Auth;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import java.util.Objects;
 
 @Data
 @Component
+@ConditionalOnProperty(prefix = "oss", name = "access-key")
 public class QiNiuUtil {
 
     @Value("${oss.access-key}")
@@ -31,7 +33,7 @@ public class QiNiuUtil {
 
     private Auth auth;
 
-     private Auth getAuth() {
+    private Auth getAuth() {
         if (Objects.isNull(auth)) {
             auth = Auth.create(getAccessKey(), getSecretKey());
         }

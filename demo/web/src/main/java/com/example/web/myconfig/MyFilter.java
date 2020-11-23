@@ -11,7 +11,10 @@ public class MyFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
+                         FilterChain filterChain) throws IOException, ServletException {
+        String nonce = servletRequest.getParameter("nonce");
+        String timestamp = servletRequest.getParameter("timestamp");
         System.out.println("MyFilter");
         filterChain.doFilter(servletRequest, servletResponse);
     }
