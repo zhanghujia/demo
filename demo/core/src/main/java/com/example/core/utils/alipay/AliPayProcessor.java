@@ -15,11 +15,11 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class AliPayConfig {
+public class AliPayProcessor {
 
     private final AliPayProperties aliPayProperties;
 
-    public AliPayConfig(AliPayProperties aliPayProperties) {
+    public AliPayProcessor(AliPayProperties aliPayProperties) {
         this.aliPayProperties = aliPayProperties;
     }
 

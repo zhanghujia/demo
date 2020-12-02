@@ -3,12 +3,10 @@ package com.example.business.service.impl;
 import com.alipay.api.AlipayApiException;
 import com.example.business.service.AliPayService;
 import com.example.core.utils.alipay.AliPayBean;
-import com.example.core.utils.alipay.AliPayConfig;
+import com.example.core.utils.alipay.AliPayProcessor;
 import com.example.core.utils.alipay.AliPayRefundBean;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,41 +17,35 @@ import java.util.Map;
 @Service
 public class AliPayServiceImpl implements AliPayService {
 
-    private final AliPayConfig aliPayConfig;
+    private final AliPayProcessor aliPayProcessor;
 
 
-    public AliPayServiceImpl(AliPayConfig aliPayConfig) {
-        this.aliPayConfig = aliPayConfig;
+    public AliPayServiceImpl(AliPayProcessor aliPayProcessor) {
+        this.aliPayProcessor = aliPayProcessor;
     }
 
     @Override
     public Map<String, String> alipay(AliPayBean aliPayBean) throws AlipayApiException {
         Map<String, String> map = new HashMap<>();
-        String pay = aliPayConfig.pay(aliPayBean);
+        String pay = aliPayProcessor.pay(aliPayBean);
         map.put("aliPay", pay);
         return map;
     }
 
     @Override
-    public void returnNotifyUrlInfo(HttpServletRequest request, HttpServletResponse response) {
-        //商户订单号
-        String outTradeNo = request.getParameter("out_trade_no");
-
-        //商户订单号
-        String tradeNo = request.getParameter("trade_no");
-
-        //贸易状态
-        String trade_status = request.getParameter("trade_status");
+    public void returnNotifyUrlInfo(String outTradeNo, String tradeNo, String tradeStatus) {
+        //判断交易状态
         String trade = "TRADE_SUCCESS";
-        if (!trade.equals(trade_status)) {
+        if (!trade.equals(tradeStatus)) {
             throw new RuntimeException("交易出错，支付回调失败");
         }
+
     }
 
     @Override
     public Map<String, String> refund(AliPayRefundBean aliPayRefundBean) throws AlipayApiException {
-        Map<String, String> map = new HashMap<>();
-        String refund = aliPayConfig.refund(aliPayRefundBean);
+        Map<String, String> map = new HashMap<>(2);
+        String refund = aliPayProcessor.refund(aliPayRefundBean);
         map.put("refund", refund);
         return map;
     }

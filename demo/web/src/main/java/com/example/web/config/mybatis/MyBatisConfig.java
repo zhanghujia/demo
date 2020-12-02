@@ -27,7 +27,7 @@ import java.util.Properties;
  */
 
 //@Configuration
-public class MyBatisConfig {
+public class  MyBatisConfig {
 
     private final static String TYPE_ALIASES_PACKAGE = "com.example.business.entity";
 

@@ -5,8 +5,6 @@ import com.example.core.utils.alipay.AliPayBean;
 import com.example.core.utils.alipay.AliPayRefundBean;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -19,25 +17,26 @@ public interface AliPayService {
     /**
      * 支付宝支付
      *
-     * @param aliPayBean
-     * @return
+     * @param aliPayBean 支付实体
+     * @return 实例对象
      */
     Map<String, String> alipay(AliPayBean aliPayBean) throws AlipayApiException;
 
     /**
      * 支付成功回调
      *
-     * @param request
-     * @param response
+     * @param outTradeNo  订单号
+     * @param tradeNo     支付宝交易号
+     * @param tradeStatus 支付状态
      */
-    void returnNotifyUrlInfo(HttpServletRequest request, HttpServletResponse response);
+    void returnNotifyUrlInfo(String outTradeNo, String tradeNo, String tradeStatus);
 
     /**
      * 支付宝退款
      *
-     * @param aliPayRefundBean
-     * @return
-     * @throws AlipayApiException
+     * @param aliPayRefundBean 支付退款实体
+     * @return 实例对象
+     * @throws AlipayApiException 阿里支付异常
      */
     Map<String, String> refund(AliPayRefundBean aliPayRefundBean) throws AlipayApiException;
 
