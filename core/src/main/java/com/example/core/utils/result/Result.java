@@ -26,7 +26,8 @@ public class Result<T> implements Serializable {
     private T data;
 
     public Result() {
-
+        this.code = SuccessEnum.SUCCESS_REQUEST.getKey();
+        this.msg = SuccessEnum.SUCCESS_REQUEST.getMsg();
     }
 
     /**
